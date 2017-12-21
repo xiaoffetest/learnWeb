@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+
+        h1,h2{
+            font-weight: 100;
+        }
+
+        h6{
+            font-weight: normal;
+        }
+        /*----上面是全局----*/
+
+        .linkheader {
+            display: block;
+            height:70px;
+            width: 1400px;
+            margin: 0px auto;
+            /*background-color: white;*/
+            /*border: 1px solid #000;*/
+        }
+
+        .linkheader li {
+            display: inline-block;
+            width: 78px;
+            height: 38px;
+            line-height:36px;
+            font-size:14px;
+            text-align: center;
+        }
+
+        .linkheader li a {
+            display:block;
+            color:black;
+            text-decoration: none;
+        }
+
+        .linkheader .logo {
+            position:relative;
+            height:100%;
+            float: left;
+            width:100px;
+            /*background-color: gray;*/
+        }
+
+        .logo img{
+            /*下面这个是让img在div里面中心居中的办法*/
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+        }
+
+        .leftnav {
+            float: left;
+            padding-left:0px;
+        }
+
+        .rightnav{
+            float: right;
+        }
+
+        .leftnav li a:hover{
+            color: #fff !important;
+            background: url(./images/navBg.png);
+            background-size:100%;
+        }
+
+        .leftnav li.active a{
+            color: #fff !important;
+            background: url(./images/navBg.png);
+            background-size:100%;
+        }
+
+        .rightnav li a{
+            color:gray;
+        }
+
+        .rightnav li a:hover{
+            color: #fff !important;
+            background: url(./images/navBg.png);
+            background-size:100%;
+        }
+
+        /*---------------------linkheader分割线----------------------*/
+        .cell{
+            display:block;
+            width:100%;
+            height:700px;
+            margin:0 auto;
+            background:white;
+            position:relative;
+            overflow: hidden;
+            /*border: 1px solid #000;*/
+        }
+        ul.content{
+            position: absolute;
+            left: 0;top: 0;margin: 0;padding: 0;
+            width:400%
+        }
+
+        ul.content li{
+            list-style: none;float: left;
+            width:25%;
+        }
+        ul.content li img{
+            width:100%;
+            display:block;
+        }
+        ul.footer{
+            position:absolute;
+            left:80px;
+            bottom:35px;
+            margin-top:0px;
+            margin-bottom:0px;
+            padding-left:0px;
+            font-size:0px;
+        }
+
+        ul.footer li{
+            display:inline-block;
+            text-align:center;
+            position:relative;
+        }
+
+        ul.footer .movetool{
+            position:absolute;
+            width:80px;
+            height:20px;
+            border-radius: 10px;
+            background-color:#ff5454;
+            display:block;
+            top:0px;
+            left:0px;
+        }
+
+        ul.footer li + li{
+            padding-left:40px;
+        }
+
+        ul.footer li a{
+            display: table-cell;
+            text-decoration:none;
+            background:white;
+            border-radius: 10px;
+            text-align: center;
+            width:20px;
+            height:20px;
+            font-size:14px;
+            vertical-align:middle
+        }
+        /*--------------登录小窗口--------------*/
+
+        .loginWindow{
+            position:absolute;
+            display:block;
+            width:400px;
+            height:400px;
+            background:white;
+            top:60px;
+            right:140px;
+            border-radius: 20px;
+        }
+
+        .loginWindow table{
+            padding:20px;
+            width:100%;
+            height:100%;
+        }
+
+        thead tr td{
+            width:50%;
+            height:40px;
+            text-align: center;
+            border-bottom:3px solid rgba(58,68,85,0.1);
+        }
+
+        thead tr td.active{
+            width:50%;
+            height:40px;
+            text-align: center;
+            border-bottom: 3px solid #ff5454;
+        }
+
+        thead tr td img{
+            vertical-align: top;
+
+        }
+
+        tbody tr td{
+            border-bottom:1px solid rgba(58,68,85,0.1) ;
+            vertical-align: bottom;
+        }
+
+        tbody tr td span{
+            display:inline-block;
+            width:80px;
+            color:rgba(58,68,85,0.4);
+            font-size: 12px;
+            line-height: 55px;
+
+        }
+
+        tbody tr td input{
+            border:none;
+            outline:none;
+        }
+
+        tfoot tr td{
+            position:relative;
+            height:130px;
+            color: #ff5454;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+
+        tfoot tr td span.forgetpassword{
+            position:absolute;
+            top:20px;
+            right:0px;
+        }
+
+        tfoot tr td a{
+            text-decoration: none;
+            color: #ff5454;
+        }
+
+        tfoot tr td button{
+            position:absolute;
+            display:block;
+            width:100%;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            background: #ff5454;
+            color:white;
+            height:40px;
+            border-radius: 10px;
+            outline: none;
+            border:none;
+        }
+
+        /*------------登录窗口 footer 左边小勾*/
+        #myCheck + label{
+            background-color: rgba(58,68,85,0.1);
+            color: white;
+            border-radius: 5px;
+            width:15px;
+            height:15px;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            font-size:12px;
+        }
+
+        #myCheck + label:after{
+            content:"\2714";
+        }
+
+        #myCheck:checked + label{
+            background-color: #eee;
+            color: #ff5454;
+        }
+
+        #myCheck:checked + label:after{
+            content:"\2714";
+        }
+
+        #myCheck{
+            display: none;
+        }
+        /*---------------------轮转图 分割线----------------------*/
+        .contentParts{
+
+        }
+
+        .contentParts ul{
+            padding:0px;
+            margin:0px;
+        }
+
+        .contentParts ul li{
+            text-align: center;
+            width:100%;
+            list-style: none;
+            padding-top:30px;
+            padding-bottom:30px;
+        }
+
+        .contentParts ul li:nth-of-type(even){
+            background-color: rgba(58,68,85,0.05);
+        }
+
+        /*158110名智库为你服务*/
+
+        #advantage ul li{
+            width:200px;
+            display:inline-block;
+            list-style: none;
+            background:none;
+            /*不加这一句的话，当一个部分的字比较少的时候，整体就会往下塌*/
+            vertical-align: top;
+            padding-top:0px;
+            padding-bottom:0px;
+        }
+
+        #advantage ul li + li{
+            margin-left:150px;
+        }
+
+        /*--- 一个项目从诞生到交付的旅程------*/
+
+        #projectSteps{
+            display:block;
+            margin:0 auto;
+            width:fit-content;
+            background:white;
+        }
+
+        #projectSteps ol{
+            padding-left:0px;
+        }
+
+        #projectSteps ol li{
+            width:100px;
+            display:inline-block;
+            list-style: none;
+            background:none;
+            vertical-align: top;
+            padding-top:0px;
+            padding-bottom:0px;
+            text-align: center;
+            margin-left:50px;
+            margin-right:50px;
+        }
+
+        #projectSteps ol li img{
+            /*---手动微调padding-left来使得img在div中水平居中（img和div宽高固定）---*/
+            padding-left:10px;
+            display: block;
+            width:80%;
+        }
+
+        #projectSteps h1{
+            /*为了防止高度塌陷。。外面的那层（.contentParts ul li 的 padding-top,padding-bottom:30px）*/
+            /*要让h1上面的空白（白色）与父节点上面的空白（灰色）区分开来。不能设置margin-top，因为会塌陷*/
+            /*这个时候同样设置padding-top就好*/
+
+            /*所以总结一点，这里的情况是，父节点的padding-top在子节点为margin-top的时候发生塌陷(吧下面的padding-top改为margin-top重现)*/
+            padding-top:30px;
+            padding-bottom:30px;
+            margin-top:0px;
+            margin-bottom:0px;
+        }
+
+        #projectSteps ol li h6{
+            margin-top:0px;
+            margin-bottom:30px;
+        }
+
+        .stepLine{
+            display:block;
+            height:5px;
+            width:100%;
+            background-color: #ff5454;
+            /*我不管你的迷之塌陷了。直接设置一个超级厚的border-bottom。 看你怎么去塌陷*/
+            border-bottom: 30px solid white;
+            width:820px;
+            margin:0 auto;
+            position:relative;
+        }
+        .stepLine img{
+            display:inline-block;
+            position:absolute;
+            background-color: white;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+        }
+        /*---------我们服务的需求-------*/
+
+        .allRequests{
+            display:block;
+            width:1000px;
+            margin:0 auto;
+        }
+
+        .requestBox{
+            display:inline-block;
+            float:left;
+            width:100px;
+            margin-left:50px;
+            margin-right:50px;
+            margin-top:30px;
+        }
+
+        .requestBox img{
+            padding-left:10px;
+            display:block;
+            width:80px;
+            height:80px;
+        }
+
+        .requestBox h6{
+            margin-top:10px;
+            margin-bottom:30px;
+        }
+        /*成功案例*/
+
+        /*-----文字后面跟一个图标。真的不知道要怎么样去对齐了，只能用这个办法。两个设置等高，然后一起float。*/
+        .more{
+            display: block;
+            margin: 0 auto;
+            width:fit-content;
+        }
+
+        .more span{
+            display:block;
+            float:left;
+            font-size: 24px;
+        }
+
+        .more img{
+            display:block;
+            float:left;
+            width:30px;
+            height:30px;
+        }
+
+        #demonstration{
+            position:relative;
+            width:900px;
+            height:280px;
+            margin:50px auto;
+            box-shadow: 0px 2px 2px 2px rgba(58,68,85,0.1);
+            background:white;
+        }
+
+        #demonstration .textContent{
+            display:inline-block;
+            vertical-align: top;
+            height:100%;
+            width:49%;
+            /*background:red;*/
+        }
+
+        #demonstration .textContent h2{
+            display:block;
+            padding-top:30px;
+            padding-left:30px;
+
+        }
+
+        #demonstration .imgContent{
+            display:inline-block;
+            height:100%;
+            width:49%;
+            /*background:green;*/
+        }
+
+        #demonstration .imgContent img{
+            display:block;
+            width:390px;
+            height:220px;
+            padding-top:30px;
+            padding-left:30px;
+        }
+
+        .leftB{
+            position:absolute;
+            display:block;
+            width:80px;
+            height:80px;
+            left:-100px;
+            top:50%;
+            transform:translate(0%,-50%);
+        }
+
+        .rightB{
+            position:absolute;
+            display:block;
+            width:80px;
+            height:80px;
+            right:-100px;
+            top:50%;
+            transform:translate(0%,-50%);
+        }
+
+        /*-------热门需求-------*/
+        .hotRequests{
+            display:block;
+            width:1000px;
+            margin:0 auto;
+            padding-bottom:50px;
+        }
+
+        .hotRequestBox{
+            position:relative;
+            display:inline-block;
+            float:left;
+            height:300px;
+            width:300px;
+            margin-top:30px;
+            box-shadow: 0px 2px 2px 2px rgba(58,68,85,0.1);
+        }
+
+        .hotRequestBox+.hotRequestBox{
+            margin-left:50px;
+        }
+
+        .hotRequestBox .boxFooter{
+            position:absolute;
+            display:block;
+            height:50px;
+            width:100%;
+            bottom:0px;
+            background:rgba(58,68,85,0.05);
+        }
+
+        .hotRequestBox .boxFooter span{
+            display: inline-block;
+            width:100px;
+            line-height:50px;
+            font-size:12px;
+        }
+
+        .hotRequestBox .boxFooter span+span{
+            padding-left:50px;
+        }
+
+        .hotRequestBox .status{
+            position:absolute;
+            top:0px;
+            right:10px;
+            background: url(./images/ico22.png) no-repeat;
+            background-size:100%;
+            display:block;
+            width:55px;
+            height:55px;
+            color:white;
+            font-size:12px;
+            line-height:40px;
+        }
+
+        .hotRequestBox .boxContent{
+            display:block;
+            width:230px;
+            height:220px;
+            margin:30px;
+            text-align: left;
+            /*background:green;*/
+        }
+
+        /*-----------footer-------------*/
+        .footerContactUs{
+            background:#1e2831;
+            color:white;
+            padding:30px;
+        }
+        .footerContactUsContent{
+            display:block;
+            width:1200px;
+            height:250px;
+            /*background: gray;*/
+            margin: 0 auto;
+        }
+        .footerDetail{
+            padding-left: 50px;
+            display:block;
+            float:left;
+            max-width: 400px;
+        }
+
+        .codeText{
+            display:inline-block;
+            text-align: center;
+            padding:30px;
+        }
+        .codeText img{
+            display:block;
+            width:100px;
+        }
+
+        /*------右边的咨询部分----*/
+
+        .consultUs{
+            display:block;
+            position:fixed;
+            right:5px;
+            top:50%;
+            transform:translate(0%,-50%);
+        }
+
+        .consultUsParts{
+            display:block;
+            margin-bottom:10px;
+        }
+
+        .consultUsParts img{
+            width:70px;
+        }
+
+        #weChatCode{
+            display:block;
+            position:absolute;
+            left:-150px;
+            top:-5px;
+            width:225px;
+            height:85px;
+            opacity:0;
+        }
+
+        #weChatCode img{
+            display:block;
+            width:150px;
+            height:150px;
+        }
+
+        /*---媒体报道---*/
+
+        .reports{
+            display:block;
+            width:1000px;
+            height:400px;
+            /*background: gray;*/
+            margin:50px auto;
+        }
+
+        .reports .reportsLeft{
+            display:inline-block;
+            width:450px;
+            height:350px;
+            /*background: red;*/
+            margin-top:25px;
+            margin-left:33px;
+            float:left;
+            box-shadow: 0px 2px 2px 2px rgba(58,68,85,0.1);
+        }
+
+        .reports .reportsLeft img{
+            display:block;
+            padding-left:5%;
+            padding-top:5%;
+            width:90%;
+            height:80%;
+        }
+
+        .reports .reportsLeft span{
+            display: block;
+            font-size:24px;
+            padding-left:5%;
+            width:90%;
+            height:20%;
+            text-align: left;
+            /*下面三句搭配使用*/
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+        }
+
+        .reports .reportsRight{
+            display:inline-block;
+            width:450px;
+            height:350px;
+            /*background: green;*/
+            margin-top:25px;
+            margin-left:33px;
+            float:left;
+        }
+
+        .reports .reportsRight .reportsTop{
+            width:100%;
+            height:140px;
+            /*background:yellow;*/
+            box-shadow: 0px 2px 2px 2px rgba(58,68,85,0.1);
+        }
+
+        .reports .reportsRight .reportsTop img{
+            display:inline-block;
+            padding-top:5%;
+            width:45%;
+            height:70%;
+        }
+
+        .reports .reportsRight .reportsTop span{
+            display:inline-block;
+            padding-top:5%;
+            width:45%;
+            height:70%;
+            text-align: left;
+            overflow-y: hidden;
+            text-overflow:ellipsis;
+            font-size:20px;
+        }
+
+        .reports .reportsRight .reportsBottom{
+            margin-top:30px;
+            width:100%;
+            height:180px;
+            /*background:blue;*/
+            box-shadow: 0px 2px 2px 2px rgba(58,68,85,0.1);
+        }
+
+        #newsBottom{
+            padding-top:10px;
+        }
+
+        #newsBottom li{
+            background:none;
+            padding:0px 0px 0px 10px;
+            margin-left:10px;
+            margin-top:5px;
+            margin-bottom:0px;
+            text-align: left;
+            border-left: 5px solid red;
+        }
+
+        #newsBottom li:last-child{
+            margin-bottom:5px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div style="z-index:99999;">
+    <div class="linkheader">
+        <div class="logo">
+            <img src="images/logo_top1.png">
+        </div>
+        <ul class="leftnav">
+            <li class="active"><a href="https://www.315pr.com:443">首页</a></li>
+            <li><a href="https://www.315pr.com:443/demand/page.shtml">需求</a></li>
+            <li><a href="https://www.315pr.com:443/freeman/freeman.shtml">智库</a></li>
+            <li><a href="https://www.315pr.com:443/package/page.shtml">营销套餐</a></li>
+            <li><a href="https://www.315pr.com:443/case/page.shtml">案例</a></li>
+            <li><a href="https://www.315pr.com:443/report/page.shtml">资讯</a></li>
+        </ul>
+        <ul class="rightnav">
+            <li><a>发布需求</a></li>
+            <li><a>申请供应商</a></li>
+            <li><a>加入智库</a></li>
+        </ul>
+        <div style="clear:both"></div>
+    </div>
+</div>
+<div id="roulette" class="cell">
+    <ul class="content">
+        <li><a><img src="images/banner1.png"></a></li>
+        <li><a><img src="images/banner2.png"></a></li>
+        <li><a><img src="images/banner3.png"></a></li>
+        <li><a><img src="images/banner1.png"></a></li>
+    </ul>
+    <ul class="footer">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <span class="movetool"></span>
+    </ul>
+    <form class="loginWindow">
+        <table>
+            <thead>
+            <tr>
+                <td><img src="images/ico25.png"><span>快速注册</span></td>
+                <td class="active"><img src="images/ico48.png"><span>登录</span></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan='2'><span>用户名</span><input></td>
+            </tr>
+            <tr>
+                <td colspan='2'><span>密码</span><input type=password></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan='2'>
+                    <input type="checkbox" id="myCheck">
+                    <label for="myCheck"></label>
+                    <span style="color:black">我同意</span>
+                    <a href="#">《服务条款》</a><a href="#">《法律公告及免责声明》</a><a href="#">《保密协议》</a><a href="#">《隐私条款》</a>
+                    <span class="forgetpassword">忘记密码</span>
+                    <button type="submit">登录</button>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </form>
+
+</div>
+<div class="contentParts">
+    <ul>
+        <!--158110名智库为你服务-->
+        <li>
+            <h1><span style="color:#ff5454">158110</span>名智库为你服务</h1>
+            <h2>我们的优势</h2>
+            <div id="advantage">
+                <ul>
+                    <li><img src="images/ico1.png"><h2>智能化</h2><h6>高效自然语义分析及营销深度学习模型，越来越精准</h6></li>
+                    <li><img src="images/ico2.png"><h2>智库化</h2><h6>跨国、跨界协同一体化，高效完成客户需求</h6></li>
+                    <li><img src="images/ico3.png"><h2>数据化</h2><h6>数据化营销方案，投入效果一目了然</h6></li>
+                </ul>
+            </div>
+        </li>
+        <!--一个项目从诞生到交付的旅程-->
+        <li>
+            <div id="projectSteps">
+                <h1>一个项目从诞生到交付的旅程</h1>
+                <ol>
+                    <li><img src="images/ico4.png" alt=""><h6>免费发布</h6></li>
+                    <li><img src="images/ico5.png" alt=""><h6>1对1客服回访</h6></li>
+                    <li><img src="images/ico6.png" alt=""><h6>精准匹配智库</h6></li>
+                    <li><img src="images/ico7.png" alt=""><h6>专业审核</h6></li>
+                    <li><img src="images/ico8.png" alt=""><h6>交付方案</h6></li>
+                </ol>
+                <div class="stepLine">
+                    <img src="images/ico19.png" style="left:0px">
+                    <img src="images/ico19.png" style="left:205px">
+                    <img src="images/ico19.png" style="left:410px">
+                    <img src="images/ico19.png" style="left:615px">
+                    <img src="images/ico19.png" style="left:820px">
+                    <img src="images/ico18.png" style="left:205px" id="stepIndex">
+                </div>
+            </div>
+        </li>
+        <!--我们所服务的需求-->
+        <li>
+            <h1>我们所服务的需求</h1>
+            <h2>为中小企业提供快速、可靠的服务 已完成<span style="color:#ff5454">3000</span>次服务</h2>
+            <div class="allRequests">
+
+                <div class="requestBox">
+                    <img src="images/ico9.png"><h6>文案撰写</h6>
+                </div>
+                <div class="requestBox">
+                    <img src="images/ico10.png"><h6>方案策划</h6>
+                </div>
+                <div class="requestBox">
+                    <img src="images/ico11.png"><h6>设计漫画</h6>
+                </div>
+                <div class="requestBox">
+                    <img src="images/ico12.png"><h6>视频动画</h6>
+                </div>
+                <div class="requestBox">
+                    <img src="images/ico13.png"><h6>会议活动</h6>
+                </div>
+                <div class="requestBox">
+                    <img src="images/ico14.png"><h6>微信</h6>
+                </div>
+                <div class="requestBox">
+                    <img src="images/ico15.png"><h6>发稿</h6>
+                </div>
+                <div class="requestBox">
+                    <img src="images/ico16.png"><h6>咨询培训</h6>
+                </div>
+                <div class="requestBox">
+                    <img src="images/ico17.png"><h6>危机公关</h6>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+
+
+        </li>
+        <!--成功案例-->
+        <li>
+            <h1>成功案例</h1>
+            <div class="more">
+                <span>更多案例</span><img src="images/more.png">
+                <div style="clear:both"></div>
+            </div>
+            <div id="demonstration">
+                <div class="textContent">
+                    <h2>事件营销怎么玩才会站在风口？点戳这里，白石山“红桦节”……</h2>
+                </div>
+                <div class="imgContent">
+                    <img src="images/successdemo1.png">
+                </div>
+                <!--<span>事件营销怎么玩才会站在风口？点戳这里，白石山“红桦节”……</span>-->
+                <!--<img src="images/successdemo1.png">-->
+                <img class="leftB" src="images/ico20.png">
+                <img class="rightB" src="images/ico21.png">
+            </div>
+        </li>
+        <!--热门需求-->
+        <li>
+            <h1>热门需求</h1>
+            <div class="more">
+                <span>更多</span><img src="images/more.png">
+                <div style="clear:both"></div>
+            </div>
+
+            <div class="hotRequests">
+                <div class="hotRequestBox">
+                    <div class="boxContent">
+                        <span style="display:block; font-size:20px;">文案代写以及PPT制作</span>
+                        <span style="display:block; font-size:12px; color:gray; padding-top:20px;">发布时间</span>
+                        <span style="display:block; font-size:12px; padding-top:5px; padding-bottom:20px;">2017-12-19</span>
+                        <span style="font-size:12px; border: 1px solid rgba(58,68,85,0.1); border-radius: 10px; padding:5px 10px;">娱乐</span>
+                        <span style="font-size:12px; border: 1px solid rgba(58,68,85,0.1); border-radius: 10px; padding:5px 10px;">文案撰写</span>
+                        <span style="display:block; font-size:24px; color:#ff5454;; padding-top:40px;">面议</span>
+                    </div>
+                    <div class="status">
+                        <span>招募中</span>
+                    </div>
+                    <div class="boxFooter">
+                        <span>已申请<a>3</a>人</span>
+                        <span>已浏览<a>30</a>人</span>
+                    </div>
+                </div>
+                <div class="hotRequestBox">
+                    <div class="boxContent">
+                        <span style="display:block; font-size:20px;">保险类公众号写手</span>
+                        <span style="display:block; font-size:12px; color:gray; padding-top:20px;">发布时间</span>
+                        <span style="display:block; font-size:12px; padding-top:5px; padding-bottom:20px;">2017-12-19</span>
+                        <span style="font-size:12px; border: 1px solid rgba(58,68,85,0.1); border-radius: 10px; padding:5px 10px;">金融财经</span>
+                        <span style="font-size:12px; border: 1px solid rgba(58,68,85,0.1); border-radius: 10px; padding:5px 10px;">新闻撰稿</span>
+                        <span style="display:block; font-size:24px; color:#ff5454;; padding-top:40px;">面议</span>
+                    </div>
+                    <div class="status">
+                        <span>招募中</span>
+                    </div>
+                    <div class="boxFooter">
+                        <span>已申请<a>1</a>人</span>
+                        <span>已浏览<a>28</a>人</span>
+
+                    </div>
+                </div>
+                <div class="hotRequestBox">
+                    <div class="boxContent">
+                        <span style="display:block; font-size:20px;">奢侈品行业新闻撰写</span>
+                        <span style="display:block; font-size:12px; color:gray; padding-top:20px;">发布时间</span>
+                        <span style="display:block; font-size:12px; padding-top:5px; padding-bottom:20px;">2017-12-19</span>
+                        <span style="font-size:12px; border: 1px solid rgba(58,68,85,0.1); border-radius: 10px; padding:5px 10px;">时尚</span>
+                        <span style="font-size:12px; border: 1px solid rgba(58,68,85,0.1); border-radius: 10px; padding:5px 10px;">文案撰写</span>
+                        <span style="display:block; font-size:24px; color:#ff5454;; padding-top:40px;">面议</span>
+                    </div>
+                    <div class="status">
+                        <span>招募中</span>
+                    </div>
+                    <div class="boxFooter">
+                        <span>已申请<a>1</a>人</span>
+                        <span>已浏览<a>18</a>人</span>
+                    </div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </li>
+        <!--媒体报道-->
+        <li>
+            <h1>媒体报道</h1>
+            <div class="more">
+                <span>查看更多</span><img src="images/more.png">
+                <div style="clear:both"></div>
+            </div>
+            <div class="reports">
+                <div class="reportsLeft">
+                    <img src="images/reportLeft.png">
+                    <span>大品牌都在怎么做营销？我们为你总结了这一点</span>
+                </div>
+                <div class="reportsRight">
+                    <div class="reportsTop">
+                        <img src="images/reportTop.jpg">
+                        <span>在《爸爸去哪儿5》的收官之作中，五个明星家庭一起回顾了过往经历</span>
+                    </div>
+                    <div class="reportsBottom">
+                        <ul id="newsBottom">
+                            <li>
+                                最牛销售23年日赚10元，一个月买得起一笼包子
+                            </li>
+                            <li>
+                                身价10块的他，有什么独特气质
+                            </li>
+                            <li>
+                                如何控制危机的传播？危机失控后又该如何？
+                            </li>
+                            <li>
+                                四张图包含了所有020的秘密
+                            </li>
+                            <li>
+                                腾讯放弃QQ这意味着什么
+                            </li>
+                            <li>
+                                全是一些乱七八糟的新闻啊这里面
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="footerContactUs">
+    <div class="footerContactUsContent">
+        <div class="footerDetail">
+            <img src="images/logo_fff.png">
+            <div class="clear"></div>
+            <h5>商务热线：151-1011-0416</h5>
+            <h5>服务热线：4008-315-002</h5>
+            <h5>联系地址：北京市朝阳区建国路77号华贸中心写字楼3号楼1201A</h5>
+            <h5>2015-2017 北京三点一刻科技有限公司 版权所有 京ICP备：15064808号-1</h5>
+        </div>
+        <div class="footerDetail">
+            <h5>智库热点</h5>
+            <h5>员工天地</h5>
+            <h5>招贤纳士</h5>
+        </div>
+        <div class="footerDetail">
+            <h5>帮助中心</h5>
+            <h5>团队介绍</h5>
+            <h5>合作伙伴</h5>
+            <h5>联系我们</h5>
+        </div>
+        <div class="footerDetail">
+            <div class="codeText">
+                <img src="images/ico23.png">
+                <span>三点一刻官微</span>
+            </div>
+            <div class="codeText">
+                <img src="images/ico24.jpg">
+                <span>APP  三点一刻</span>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+<div class="consultUs">
+    <div id="weChatCode">
+        <img src="images/wechatcode.jpg">
+    </div>
+
+    <div class="consultUsParts"  style="position:relative;">
+        <img src="images/tel_wx.png" id="weChatImg">
+    </div>
+    <div class="consultUsParts">
+        <img src="images/sem_kf.png">
+    </div>
+    <div class="consultUsParts">
+        <img src="images/tel_qq.png">
+    </div>
+    <div class="consultUsParts">
+        <img src="images/tel_zk.png">
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        var cell = document.getElementById("roulette");
+        var ul = cell.getElementsByClassName("content")[0];
+        var lis = ul.getElementsByTagName("li");
+        var liWidth = lis[0].offsetWidth;
+        var clickmove = null;
+        var ulfooter = cell.getElementsByClassName("footer")[0];
+        var lisfooter = ulfooter.getElementsByTagName("li");
+        var currentItem = 0;
+        var autoMove = null;
+        var moveToolbar = ulfooter.getElementsByClassName("movetool")[0];
+
+        function switchImg(index) {
+            clearInterval(autoMove);
+            if (index > currentItem) {
+                index = index - 1;
+            }
+            var step = -40;
+            var end = -index * liWidth;
+            var speedUP = (Math.abs(end - ul.offsetLeft) / liWidth) + 1;
+            step = step * speedUP;
+            clearTimeout(autoMove);
+            clearInterval(clickmove);
+
+            clickmove = setInterval(function () {
+                if (Math.abs(end - ul.offsetLeft) <= Math.abs(step)) {
+                    ul.style.left = end + 'px';
+                    currentItem = index;
+                    //60值的由来：球.width+(球+球.padding-left)
+                    moveToolbar.style.left = currentItem * 60 + 'px';
+                    clearInterval(clickmove);
+                    autoPlay();
+                } else {
+                    if (end < ul.offsetLeft) {
+                        ul.style.left = ul.offsetLeft + step + 'px';
+                    } else {
+                        ul.style.left = ul.offsetLeft - step + 'px';
+                    }
+                }
+
+            }, 30);
+        }
+
+        Array.prototype.forEach.call(lisfooter, function (item, index) {
+            item.onclick = function () {
+                clearTimeout(autoMove);
+                switchImg(index);
+            }
+        });
+
+        function autoPlay() {
+            var current = ++currentItem % lis.length;
+            autoMove = setTimeout(function () {
+                switchImg(current)
+            }, 3000);
+        }
+
+        autoPlay();
+
+        var weChatImg = document.getElementById("weChatImg");
+        var weChatCode = document.getElementById("weChatCode");
+        var showChatCode=weChatCode.getElementsByTagName("img")[0];
+        console.log(weChatImg);
+        console.log(weChatCode);
+        weChatImg.onmouseover=function(e){
+            weChatCode.style.opacity=1;
+            console.log("aaaaaaa");
+        }
+        showChatCode.onmouseout=function(e){
+            weChatCode.style.opacity=0;
+            console.log("bbbbbbb");
+        }
+        weChatCode.onmouseout=function(e){
+            weChatCode.style.opacity=0;
+            console.log("bbbbbbb");
+        }
+    }
+</script>
+</body>
+</html>
